@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { DataFormFields } from "../util/const";
 import { RootState } from '../store/index';
@@ -11,12 +11,12 @@ export function HomePage() {
     <div>
       <h1>Выберите форму</h1>
       <div className="wrapper">
-        <Link to="/form-1">Form-1</Link>
-        <Link to="/form-2">Form-2</Link>
+        <NavLink to="/UncontrolledForm">Uncontrolled Form</NavLink>
+        <NavLink to="/ReactHookForm">React Hook Form</NavLink>
       </div>
       <div className="form-show">
-        {formData.firstName && (
-          <span className="field">name: {formData.firstName}</span>
+        {formData.name && (
+          <span className="field">name: {formData.name}</span>
         )}
         {formData.age && (
           <span className="field">age: {formData.age}</span>

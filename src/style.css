@@ -5,9 +5,27 @@ body {
     sans-serif;
 }
 
-form {
-  max-width: 500px;
-  margin: 0 auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  font-size: 24px;
+  transition: 0.5s;
+}
+
+p {
+  height: 20px;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+a:hover {
+  color: #bf1650;
+  transition: 0.5s;
 }
 
 h1 {
@@ -19,6 +37,9 @@ h1 {
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: #0e101c;
   max-width: 400px;
   margin: 0 auto;
@@ -26,11 +47,6 @@ h1 {
 
 p {
   color: #bf1650;
-}
-
-p::before {
-  display: inline;
-  content: "⚠ ";
 }
 
 input {
@@ -46,13 +62,13 @@ input {
 
 label {
   line-height: 2;
-  text-align: left;
+  text-align: center;
   display: block;
-  margin-bottom: 13px;
-  margin-top: 20px;
   color: white;
   font-size: 14px;
   font-weight: 200;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
 button[type="submit"],
@@ -66,6 +82,8 @@ input[type="submit"] {
   font-size: 16px;
   font-weight: 100;
   letter-spacing: 10px;
+  transition: 0.5s;
+  cursor: pointer;
 }
 
 button[type="submit"]:hover,
@@ -126,12 +144,7 @@ button {
   padding: 10px 20px;
   border-radius: 4px;
 }
-/***********************************************/
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+
 .wrapper {
   display: flex;
   justify-content: space-between;
@@ -156,10 +169,7 @@ form {
 .gender {
   display: flex;
   justify-content: space-around;
-}
-
-label {
-  text-align: center;
+  gap: 20px;
 }
 
 .hidden {

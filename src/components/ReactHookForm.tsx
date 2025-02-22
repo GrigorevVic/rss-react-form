@@ -5,7 +5,7 @@ import { addDataForm } from "../store/slice";
 import { useNavigate } from "react-router-dom";
 import { schema, DataFormFields } from "../util/const";
 
-export function Form1() {
+export function ReactHookForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const addData = (data: DataFormFields) => {
@@ -27,7 +27,7 @@ export function Form1() {
 
   return (
     <div>
-      <h1>FORM - 1</h1>
+      <h1>React Hook Form</h1>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <label>
           First Name
