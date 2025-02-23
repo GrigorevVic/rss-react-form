@@ -1,16 +1,20 @@
-import { schema, FormFieldsElement, DataFormFields } from "../util/const";
+import { schema } from "../util/validationSchema";
+import { FormFieldsElement, DataFormFields } from "../util/types";
 import { ValidationError } from "yup";
-import { useDispatch } from "react-redux";
-import { addDataForm } from "../store/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { addDataForm } from "../store/formDataSlice";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { RootState } from "../store/store";
 
 type FormErrors = Record<string, string>;
 
 export function UncontrolledForm() {
+  const countries = useSelector((state: RootState) => state.countries);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [errors, setErrors] = useState<FormErrors>({});
+
   const addData = (data: DataFormFields) => {
     dispatch(addDataForm(data));
   };
@@ -20,8 +24,18 @@ export function UncontrolledForm() {
   > = (event) => {
     event.preventDefault();
     const form = event.currentTarget;
-    const { name, age, email, gender, isAccept, password, passwordConfirm } =
-      form;
+    const {
+      name,
+      age,
+      email,
+      gender,
+      isAccept,
+      password,
+      passwordConfirm,
+      country,
+    } = form;
+
+    console.log(country.value);
 
     try {
       const formData = schema.validateSync(
@@ -33,6 +47,7 @@ export function UncontrolledForm() {
           isAccept: isAccept.checked,
           password: password.value,
           passwordConfirm: passwordConfirm.value,
+          country: country.value,
         },
         { abortEarly: false }
       );
@@ -80,6 +95,16 @@ export function UncontrolledForm() {
           Confirm Password
           <input name="passwordConfirm" type="text" required />
           <p>{errors.passwordConfirm ? errors.passwordConfirm : ""}</p>
+        </label>
+        <label>
+          Choose country
+          <select name="country">
+            {countries.map((country) => (
+              <option key={country} value={country}>
+                {country}
+              </option>
+            ))}
+          </select>
         </label>
         <div className="gender">
           <label>

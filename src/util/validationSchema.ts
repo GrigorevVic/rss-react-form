@@ -1,4 +1,5 @@
 import * as yup from "yup";
+import { countries } from "./countries";
 
 export const schema = yup.object({
   name: yup
@@ -34,20 +35,9 @@ export const schema = yup.object({
     .boolean()
     .required("You must accept the Terms and Conditions")
     .isTrue("You must accept the Terms and Conditions"),
+    country: yup.string()
+    .required('Country is required')
+    .oneOf(countries, 'Should be a country from the list'),
 });
 
-export type FormFieldsElement = {
-  name: HTMLInputElement;
-  age: HTMLInputElement;
-  email: HTMLInputElement;
-  gender: HTMLInputElement;
-  isAccept: HTMLInputElement;
-};
 
-export type DataFormFields = {
-  name: string;
-  age: number;
-  email: string;
-  gender: string;
-  isAccept: boolean;
-};
