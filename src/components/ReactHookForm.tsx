@@ -17,7 +17,13 @@ export function ReactHookForm() {
     formState: { errors, isValid },
     reset,
     handleSubmit,
-  } = useForm({ mode: "onBlur", resolver: yupResolver(schema) });
+  } = useForm({
+    defaultValues: {
+      gender: "male",
+    },
+    mode: "onChange",
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = (data: DataFormFields) => {
     addData(data);
@@ -25,23 +31,36 @@ export function ReactHookForm() {
     navigate("/", { replace: true });
   };
 
+  console.log(isValid, errors)
+
   return (
     <div>
       <h1>React Hook Form</h1>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <label>
           First Name
-          <input {...register("firstName")} />
+          <input {...register("name")} />
+          <p>{errors.name?.message}</p>
         </label>
-        <p>{errors.firstName?.message}</p>
         <label>
           Age
           <input {...register("age")} />
+          <p>{errors.age?.message?.split(",")[0]}</p>
         </label>
-        <p>{errors.age?.message}</p>
         <label>
           Email
           <input {...register("email")} />
+          <p>{errors.email?.message}</p>
+        </label>
+        <label>
+          Password
+          <input {...register("password")} type="text"/>
+          <p>{errors.password?.message}</p>
+        </label>
+        <label>
+          Confirm Password
+          <input {...register("passwordConfirm")} type="text" />
+          <p>{errors.passwordConfirm?.message}</p>
         </label>
         <div className="gender">
           <label>
@@ -53,7 +72,15 @@ export function ReactHookForm() {
             Female
           </label>
         </div>
-        <button type="submit" disabled={!isValid}>SUBMIT</button>
+        <p>{errors.gender?.message}</p>
+        <label>
+          accept Terms and Conditions
+          <input {...register("isAccept")} type="checkbox" />
+          <p>{errors.isAccept?.message}</p>
+        </label>
+        <button type="submit" disabled={!isValid}>
+          SUBMIT
+        </button>
       </form>
     </div>
   );

@@ -20,7 +20,7 @@ a {
 p {
   height: 20px;
   font-size: 14px;
-  font-weight: 200;
+  font-weight: 400;
 }
 
 a:hover {
@@ -86,32 +86,16 @@ input[type="submit"] {
   cursor: pointer;
 }
 
-button[type="submit"]:hover,
+button:not([disabled]):hover,
 input[type="submit"]:hover {
   background: #bf1650;
-}
-
-button[type="submit"]:active,
-input[type="button"]:active,
-input[type="submit"]:active {
   transition: 0.3s all;
-  transform: translateY(3px);
-  border: 1px solid transparent;
-  opacity: 0.8;
 }
 
-input:disabled {
+button[disabled] {
+  background: #bf1650;
   opacity: 0.4;
-}
-
-input[type="button"]:hover {
-  transition: 0.3s all;
-}
-
-button[type="submit"],
-input[type="button"],
-input[type="submit"] {
-  -webkit-appearance: none;
+  cursor: default;
 }
 
 .App {

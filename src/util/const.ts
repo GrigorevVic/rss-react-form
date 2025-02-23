@@ -23,8 +23,9 @@ export const schema = yup.object({
     .matches(
       /[-+:|/\\%*#@$!?^&]/,
       'Password must contain a character from "-+/%*:#@\\$!?|^&"'
-    ),
-  "passwordConfirm": yup
+    )
+    .min(8, 'Minimum password length 8 characters'),
+  passwordConfirm: yup
     .string()
     .required("Please confirm your password")
     .oneOf([yup.ref("password")], "Passwords do not match"),
