@@ -6,9 +6,10 @@ export type FormFieldsElement = {
     isAccept: HTMLInputElement;
     password:  HTMLInputElement;
     country:  HTMLInputElement;
+    image: HTMLInputElement;
   };
   
-  export type DataFormFields = {
+  export type FormData = {
     name: string;
     age: number;
     email: string;
@@ -16,5 +17,5 @@ export type FormFieldsElement = {
     isAccept: boolean;
     password: string
     country: string;
+    image: FileList;
   };
-  

@@ -23,6 +23,9 @@ export function HomePage() {
           <span className="field">Password: {formData.password}</span>
           <span className="field">Gender: {formData.gender}</span>
           <span className="field">Country: {formData.country}</span>
+          <div className="field">
+            Image: <img src={formData.image} alt="img" style={{ width: '100%', height: '100%' }}/>
+          </div>
         </div>
       )}
     </div>
