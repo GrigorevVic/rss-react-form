@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addDataForm } from "../store/formDataSlice";
 import { useNavigate } from "react-router-dom";
 import { schema } from "../util/validationSchema";
-import { FormData } from "../util/types";
+import { FormData2 } from "../util/types";
 import { RootState } from "../store/store";
 import { fileToBase64 } from "../util/fileToBase64";
 
@@ -26,7 +26,7 @@ export function ReactHookForm() {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: FormData) => {
+  const onSubmit = async (data: FormData2) => {
     const base64Picture = await fileToBase64(data.image[0]);
     dispatch(addDataForm({ ...data, image: base64Picture }));
     reset();

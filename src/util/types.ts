@@ -17,5 +17,16 @@ export type FormFieldsElement = {
     isAccept: boolean;
     password: string
     country: string;
+    image: string;
+  };
+
+  export type FormData2 = {
+    name: string;
+    age: number;
+    email: string;
+    gender: string;
+    isAccept: boolean;
+    password: string
+    country: string;
     image: FileList;
   };

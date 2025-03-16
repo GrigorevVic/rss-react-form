@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { DataFormFields } from "../util/types";
+import { FormData } from "../util/types";
 import { RootState } from "../store/store";
 
 export function HomePage() {
   const stateData = useSelector((state: RootState) => state.form);
-  const formData = stateData.form as DataFormFields;
+  const formData = stateData.form as FormData;
   const isData = Boolean(Object.keys(formData).length);
 
   return (
